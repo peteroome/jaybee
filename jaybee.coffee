@@ -36,6 +36,23 @@ playNext = ->
     markAsNowPlaying track
   else
     console.log "Add a track to the playlist"
+    dj()
+
+dj = ->
+  date = new Date
+  start = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+  
+  # PlayedTracks.find({created_at: {$lt: start}}, {limit: 3, fields: {track_id: 1}})
+  tracks = PlayedTracks.find 
+    created_at: {$gt: start}, 
+      limit: 3
+      fields: {track_id: 1}
+
+  console.log tracks
+  if tracks
+    for track in tracks
+      console.log track.track_id
+    # addToPlaylist track.track_id
 
 elapsed = (id, position) ->
   track = PlaylistTracks.findOne id

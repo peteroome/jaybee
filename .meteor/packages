@@ -7,6 +7,7 @@ standard-app-packages
 autopublish
 insecure
 coffeescript
-accounts-soundcloud
 accounts-ui-unstyled
+accounts-soundcloud
 profile-online
+

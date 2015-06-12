@@ -45,7 +45,6 @@ nav {
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
-  width: 40px;
   border-color: #f95300;
   border-width: 3px;
   border-style: solid;
@@ -118,6 +117,52 @@ section {
   padding: 1%;
 }
 
+.searchResults {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.searchResults li {
+  margin: 10px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.imageHolder,
+.trackDetail {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.imageHolder {
+  width: 14%;
+  margin-right: 1%;
+}
+
+.trackDetail {
+  width: 84%;
+  margin-left: 1%;
+}
+
+.trackDetail p {
+  margin: 0;
+  line-height: 145%;
+}
+
+.searchResults li > ul {
+  display: inline-block;
+  widows: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.searchResults li > ul li {
+  border: 0;
+  padding: 0;
+}
+
 /* Favourites */
 a.favorite {
   color: black;
@@ -138,4 +183,13 @@ a.favorited {
   display: inline-block;
   font-size: 2em;
   padding: 0 15px
+}
+
+
+/* Buttons */
+.button {
+  background: #f95300;
+  padding: 6px 10px;
+  color: white;
+  border-radius: 4px;
 }

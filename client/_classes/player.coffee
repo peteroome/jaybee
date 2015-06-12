@@ -127,6 +127,7 @@ class window.Player
     Meteor.call "nextTrack", (error, track) =>
       if track
         @markAsNowPlaying track
+        @play track
       else
         console.log "Add a track to the playlist"
 

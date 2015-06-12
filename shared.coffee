@@ -37,9 +37,6 @@ if Meteor.isClient
         Meteor.call "nowPlaying", (error, track) ->
           Session.set "now_playing", track
 
-          if track.now_playing == true
-            player.play track
-
 # Routes
 Router.map () ->
   this.route 'home', 

@@ -76,3 +76,21 @@ Meteor.methods
       PlaylistTracks.update track._id,
         $set:
           position: position
+
+  addMaster: ->
+    console.log "Add Master: ", Meteor.user()._id
+    return Masters.insert
+      user_id: Meteor.user()._id
+
+  destroyMasters: ->
+    console.log "server destroy"
+    return Masters.remove({})
+
+  removeMaster: ->
+    console.log "Remove Master: ", Meteor.user()._id
+    Masters.remove user_id: Meteor.user()._id
+    return Masters.remove user_id: Meteor.user()._id
+
+  listening: (master_id) ->
+    console.log "Current listening?"
+    return Masters.findOne {user_id: Meteor.user()._id}

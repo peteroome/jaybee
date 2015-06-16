@@ -77,12 +77,19 @@ nav {
   margin-left: 5px;
 }
 
+.master_button.master,
+.master_button:hover {
+  background: white;
+  color: #f95300;
+}
+
 a {
   color: #f95300;
 }
 
 a:hover {
   cursor: pointer;
+  text-decoration: none;
 }
 
 section {

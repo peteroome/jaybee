@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 insecure
 iron:router
 mrt:profile-online
@@ -12,4 +11,3 @@ coffeescript
 mrt:accounts-soundcloud
 accounts-ui-unstyled
 fortawesome:fontawesome
-

@@ -2,6 +2,7 @@
 #
 @PlaylistTracks = new Meteor.Collection("playlist_tracks")
 @PlayedTracks = new Meteor.Collection("played_tracks")
+@Masters = new Meteor.Collection("masters")
 
 # Subscribes
 if Meteor.isClient
@@ -17,6 +18,11 @@ if Meteor.isClient
   # This sets it on the UI.
   Meteor.call "nowPlaying", (error, track) ->
     @player.markAsNowPlaying track if track
+
+  # Subscriptions
+  # Docs: https://www.meteor.com/try/11
+  Meteor.subscribe "masters"
+  Meteor.subscribe "playlist_tracks"
 
   Meteor.subscribe 'SC.OAuth', ->
     if Meteor.user()

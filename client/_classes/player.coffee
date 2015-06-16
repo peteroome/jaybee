@@ -101,21 +101,23 @@ class window.Player
     console.log "play"
     playerInstance = @
 
-    # Play it
-    SC.stream "/tracks/#{track.track_id}", (sound, error) ->
-      # Stop anything thats playing
-      soundManager.stopAll()
+    Meteor.call "listening", (error, master) ->
+      if master?
+        # Play it
+        SC.stream "/tracks/#{track.track_id}", (sound, error) ->
+          # Stop anything thats playing
+          soundManager.stopAll()
 
-      # Start playing the track
-      sound.play
-        onfinish: ->
-          playerInstance.playNext()
-        whileplaying: ->
-          playerInstance.elapsed track, @position
-        onload: ->
-          if @readyState == 2
-            console.warn "There was a problem with the track.", @
-            playerInstance.playNext()
+          # Start playing the track
+          sound.play
+            onfinish: ->
+              playerInstance.playNext()
+            whileplaying: ->
+              playerInstance.elapsed track, @position
+            onload: ->
+              if @readyState == 2
+                console.warn "There was a problem with the track.", @
+                playerInstance.playNext()
 
   playNext: ->
     # Add to history

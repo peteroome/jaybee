@@ -8,14 +8,3 @@
 
 <body>
 </body>
-
-<template name="header">
-  <header>
-    <h1>Jaybee</h1><nav>
-      {{> loginButtons}}
-      {{#if currentUser}}
-        <img class="avatar" width="50" src="{{currentUser.services.soundcloud.avatar_url}}" />
-      {{/if}}
-    </nav>
-  </header>
-</template>

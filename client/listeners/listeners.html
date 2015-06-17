@@ -1,8 +1,12 @@
 <template name="listeners">
   <h2>Listeners:</h2>
-  {{#each listeners}}
-    <a href="{{services.soundcloud.permalink_url}}" title="{{profile.name}}" target="_blank">
-    	<img src="{{services.soundcloud.avatar_url}}" width="50" alt="{{profile.name}}" class="avatar"/>
-    </a>
-  {{/each}}
+  <ul class="listeners">
+	  {{#each listeners}}
+	  	<li>
+		    <a data-control="master" class="{{#if muted}}master{{/if}}" title="{{profile.name}}">
+		    	<img src="{{services.soundcloud.avatar_url}}" width="50" alt="{{profile.name}}"/>
+		    </a>
+		  </li>
+	  {{/each}}
+	</ul>
 </template>

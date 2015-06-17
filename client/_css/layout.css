@@ -200,3 +200,35 @@ a.favorited {
   color: white;
   border-radius: 4px;
 }
+
+/* Listeners */
+.listeners {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.listeners li {
+}
+
+.listeners li a {
+  display: inline-block;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+  margin: 0 5px 5px 0;
+}
+
+.listeners li a:hover,
+.listeners li a.master {
+  border-color: #f95300;
+}
+
+.listeners li img {
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}

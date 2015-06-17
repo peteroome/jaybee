@@ -4,11 +4,6 @@
       {{> loginButtons}}
       {{#if currentUser}}
         <img class="avatar" width="50" src="{{currentUser.services.soundcloud.avatar_url}}" />
-        <a data-control="master" class="master_button button">Master</a>
-        {{#each masters}}
-        	<a data-control="delete-masters">{{_id}} - {{user_id}}</a>
-        {{/each}}
-        <h3 style="color: pink">{{listening}}</h3>
       {{/if}}
     </nav>
   </header>

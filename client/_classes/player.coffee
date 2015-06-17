@@ -101,23 +101,24 @@ class window.Player
     console.log "play"
     playerInstance = @
 
-    Meteor.call "listening", (error, master) ->
-      if master?
-        # Play it
-        SC.stream "/tracks/#{track.track_id}", (sound, error) ->
-          # Stop anything thats playing
-          soundManager.stopAll()
+    # Play it
+    SC.stream "/tracks/#{track.track_id}", (sound, error) ->
+      # Stop anything thats playing
+      soundManager.stopAll()
+      Session.set "currentSound", sound
 
-          # Start playing the track
-          sound.play
-            onfinish: ->
-              playerInstance.playNext()
-            whileplaying: ->
-              playerInstance.elapsed track, @position
-            onload: ->
-              if @readyState == 2
-                console.warn "There was a problem with the track.", @
-                playerInstance.playNext()
+      # Start playing the track
+      sound.play
+        onfinish: ->
+          playerInstance.playNext()
+        whileplaying: ->
+          playerInstance.elapsed track, @position
+          playerInstance.toggleMute @
+          playerInstance.setVolume @
+        onload: ->
+          if @readyState == 2
+            console.warn "There was a problem with the track.", @
+            playerInstance.playNext()
 
   playNext: ->
     # Add to history
@@ -143,3 +144,15 @@ class window.Player
 
     Session.set "local_elapsed_time", elapsed_time
     Meteor.call "elapsed", [track, position, elapsed_time]
+
+  toggleMute: (sound) ->
+    listening = Session.get "muted"
+    
+    if listening and sound.muted
+      sound.unmute()
+    else if !listening and !sound.muted
+      sound.mute()
+
+  setVolume: (sound) ->
+    volume = Session.get "volume"   
+    sound.setVolume volume

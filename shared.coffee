@@ -24,6 +24,10 @@ if Meteor.isClient
   Meteor.subscribe "masters"
   Meteor.subscribe "playlist_tracks"
 
+  # Default session settings
+  Session.set "muted", false
+  Session.set "volume", 50
+
   Meteor.subscribe 'SC.OAuth', ->
     if Meteor.user()
       # Set Access Token
@@ -43,8 +47,17 @@ if Meteor.isClient
         Meteor.call "nowPlaying", (error, track) ->
           Session.set "now_playing", track
 
+    Masters.find().observe
+      added: (master) ->
+        if Meteor.user() and master.user_id == Meteor.user()._id
+          Session.set "muted", true
+      removed: (master) ->
+        if Meteor.user() and master.user_id == Meteor.user()._id
+          Session.set "muted", false
+      changed: (newMaster, oldMaster) ->
+        Session.set "volume", newMaster.volume
+
 # Routes
 Router.map () ->
   this.route 'home', 
     path: '/'
-      

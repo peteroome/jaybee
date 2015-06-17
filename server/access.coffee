@@ -78,19 +78,17 @@ Meteor.methods
           position: position
 
   addMaster: ->
-    console.log "Add Master: ", Meteor.user()._id
     return Masters.insert
       user_id: Meteor.user()._id
-
-  destroyMasters: ->
-    console.log "server destroy"
-    return Masters.remove({})
+      volume: ->
+        master = Masters.findOne({})
+        return if master? then master.volume else 50
 
   removeMaster: ->
-    console.log "Remove Master: ", Meteor.user()._id
-    Masters.remove user_id: Meteor.user()._id
     return Masters.remove user_id: Meteor.user()._id
 
-  listening: (master_id) ->
-    console.log "Current listening?"
-    return Masters.findOne {user_id: Meteor.user()._id}
+  setMasterVolume: (volume) ->
+    return Masters.update({}, {$set: {volume: volume}}, { multi: true })
+
+
+

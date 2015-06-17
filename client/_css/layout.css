@@ -192,7 +192,6 @@ a.favorited {
   padding: 0 15px
 }
 
-
 /* Buttons */
 .button {
   background: #f95300;
@@ -209,6 +208,7 @@ a.favorited {
 }
 
 .listeners li {
+  display: inline-block;
 }
 
 .listeners li a {

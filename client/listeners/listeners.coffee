@@ -12,8 +12,10 @@ Template.listeners.events
       Meteor.call "addMaster"
 
 Template.listeners.helpers
-  muted: ->
-    return Session.get "muted"
+  muted: (user_id) ->
+    master = Masters.findOne {user_id: user_id}
+    return if master? then true else false
 
   listeners: ->
-    return Meteor.users.find({ "profile.online": true }).fetch()
+    # return Meteor.users.find({ "profile.online": true }).fetch()
+    return UserPresences.find { state: "online" }

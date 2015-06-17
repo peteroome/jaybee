@@ -11,3 +11,7 @@ Meteor.publish "masters", ->
 Meteor.publish "playlist_tracks", ->
   return PlaylistTracks.find {now_playing: false}, 
     sort: [["created_at", "asc"]]
+
+
+Meteor.publish "userPresence",  ->
+  return UserPresences.find { state: "online" }

@@ -6,8 +6,8 @@
 meteor-platform
 insecure
 iron:router
-mrt:profile-online
 coffeescript
 mrt:accounts-soundcloud
 accounts-ui-unstyled
 fortawesome:fontawesome
+dpid:user-presence

@@ -23,10 +23,18 @@ if Meteor.isClient
   # Docs: https://www.meteor.com/try/11
   Meteor.subscribe "masters"
   Meteor.subscribe "playlist_tracks"
+  Meteor.subscribe "userPresence"
 
   # Default session settings
   Session.set "muted", false
   Session.set "volume", 50
+
+  # Register logged in/active user
+  UserPresence.data = ->
+    return {
+      avatar: Meteor.user().services.soundcloud.avatar_url,
+      name: Meteor.user().profile.name 
+    }
 
   Meteor.subscribe 'SC.OAuth', ->
     if Meteor.user()

@@ -9,9 +9,8 @@ Meteor.publish "masters", ->
   return Masters.find()
 
 Meteor.publish "playlist_tracks", ->
-  return PlaylistTracks.find {now_playing: false}, 
+  return PlaylistTracks.find {}, 
     sort: [["created_at", "asc"]]
-
 
 Meteor.publish "userPresence",  ->
   return UserPresences.find { state: "online" }

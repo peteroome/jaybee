@@ -2,10 +2,10 @@
   <h2>Playlist</h2>
   {{#each tracks}}
     <li>
-      <img src="{{artwork_url}}" width="50" />
+      <img src="{{track_image_url}}" width="50" />
       {{title}} - {{username}} <span><small>({{length duration}})</small></span>&nbsp;<a href="{{permalink_url}}" target="_blank"><i class="fa fa-external-link"></i></a>
       <ul>
-        <li>Added by: <img src="{{avatar_url}}" width="25" /></li>
+        <li>Added by: <img class="avatar" src="{{avatar_url}}" width="25" /></li>
         {{#if allowedToRemove }}
           <li>
             <a class="remove" data-track-id="{{_id}}">Remove</a>

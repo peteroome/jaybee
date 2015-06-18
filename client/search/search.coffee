@@ -20,3 +20,9 @@ Template.searchResults.helpers
 
   length: (duration) ->
     return player.track_length(duration)
+
+  track_image_url: ->
+    if @artwork_url
+      return @artwork_url
+    else
+      return "http://fillmurray.com/g/50/50"

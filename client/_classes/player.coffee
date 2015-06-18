@@ -1,6 +1,6 @@
 class window.Player
   constructor: ->
-    console.log "Player class"
+    # console.log "Player class"
 
   search: (search_query, page_size = 20) ->
     SC.get "/tracks", 
@@ -136,7 +136,6 @@ class window.Player
 
   markAsNowPlaying: (track) ->
     @elapsed(track, 0)
-    Session.set "now_playing", track
     Meteor.call "markAsNowPlaying", track
 
   elapsed: (track, position) =>

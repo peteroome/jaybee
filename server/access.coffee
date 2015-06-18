@@ -39,7 +39,6 @@ Meteor.methods
 
   upVote: ->
     Meteor.call "nowPlaying", (error, track) ->
-      console.log "access:upVote", track
       PlaylistTracks.update track._id,
         $addToSet:
           upVotes: Meteor.user()._id
@@ -48,7 +47,6 @@ Meteor.methods
 
   downVote: ->
     Meteor.call "nowPlaying", (error, track) ->
-      console.log "access:downVote", track
       PlaylistTracks.update track._id,
         $addToSet:
           downVotes: Meteor.user()._id

@@ -37,3 +37,9 @@ Template.playlist.helpers
     track = $.inArray @track_id, favorites
 
     return if track > -1 then "favorited" else "favorite"
+
+  track_image_url: ->
+    if @artwork_url
+      return @artwork_url
+    else
+      return "http://fillmurray.com/g/50/50"

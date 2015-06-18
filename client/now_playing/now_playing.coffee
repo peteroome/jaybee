@@ -23,7 +23,8 @@ Template.now_playing.events
 
 Template.now_playing.helpers
   now_playing: ->
-    return Session.get "now_playing"
+    return PlaylistTracks.findOne {now_playing: true},
+      sort: [["created_at", "asc"]]
 
   length: ->
     return player.track_length @duration
@@ -43,9 +44,13 @@ Template.now_playing.helpers
     return if track > -1 then "favorited" else "favorite"
 
   total_upVotes: ->
-    console.log "Upvotes: ", @upVotes.length
     return @upVotes.length
 
   total_downVotes: ->
-    console.log "DownVotes: ", @downVotes.length
     return @downVotes.length
+
+  track_image_url: (track) ->
+    if track.artwork_url
+      return track.artwork_url
+    else
+      return "http://fillmurray.com/g/50/50"

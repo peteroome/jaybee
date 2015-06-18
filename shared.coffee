@@ -53,12 +53,6 @@ if Meteor.isClient
 
   # Track shit to publish to everyone! \o/
   Tracker.autorun ->
-    PlaylistTracks.find().observeChanges
-      changed: (id, fields) ->
-        # Update now playing
-        Meteor.call "nowPlaying", (error, track) ->
-          Session.set "now_playing", track
-
     Masters.find().observe
       added: (master) ->
         if Meteor.user() and master.user_id == Meteor.user()._id

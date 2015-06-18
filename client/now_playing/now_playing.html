@@ -2,10 +2,10 @@
   <h2>Now Playing:</h2>
   {{#with now_playing}}
     <div>
-      <img src="{{now_playing.artwork_url}}" width="50" />
+      <img src="{{track_image_url now_playing}}" width="50" />
       {{title}} - {{username}} <span><small>({{length duration}}) - ({{elapsed}})</small></span>&nbsp;<a href="{{permalink_url}}" target="_blank"><i class="fa fa-external-link"></i></a>
       <ul>
-        <li>Added by: <img src="{{avatar_url}}" width="25" /></li>
+        <li>Added by: <img class="avatar" src="{{avatar_url}}" width="25" /></li>
         <li>
           <a class="{{favourited}}" data-track-id="{{track_id}}" title="Favourite me!">
             <i class="fa fa-heart"></i>

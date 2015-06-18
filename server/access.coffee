@@ -69,11 +69,11 @@ Meteor.methods
           downVotes: track.downVotes
           created_at: new Date()
 
-  elapsed: (track, position, elapsed_time) ->
+  elapsed: (track, position) ->
     if position > track.position
       PlaylistTracks.update track._id,
         $set:
-          elapsed_time: elapsed_time
+          position: position
 
   addMaster: (user_id) ->
     return Masters.insert

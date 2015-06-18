@@ -1,4 +1,4 @@
-Template.controls.events 
+Template.controls.events
   "click [data-control=play]": (event) ->
     event.preventDefault()
     Meteor.call "nowPlaying", (error, track) ->

@@ -26,6 +26,9 @@ Template.now_playing.helpers
     return PlaylistTracks.findOne {now_playing: true},
       sort: [["created_at", "asc"]]
 
+  elapsed: ->
+    return Session.get "local_elapsed_time"
+
   length: ->
     return player.track_length @duration
 

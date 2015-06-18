@@ -28,6 +28,7 @@ if Meteor.isClient
   # Default session settings
   Session.set "muted", false
   Session.set "volume", 50
+  Session.set "local_elapsed_time", "00:00"
 
   # Register logged in/active user
   UserPresence.data = ->

@@ -107,6 +107,11 @@ class window.Player
       soundManager.stopAll()
       Session.set "currentSound", sound
 
+      # If joining a session and the player
+      # is already playing, match the new
+      # client to the currently playing position
+      # if track.position > 0
+
       # Start playing the track
       sound.play
         onfinish: ->
@@ -140,7 +145,15 @@ class window.Player
 
   elapsed: (track, position) =>
     elapsed_time = @track_length(position)
-    Meteor.call "elapsed", track, position, elapsed_time
+
+    # This is to prevent the timer
+    # from gibbing out as we update across
+    # multiple clients.
+    Session.set "local_elapsed_time", elapsed_time
+
+    # This updates the current position on the 
+    # track, so we can plumb in a resume function.
+    Meteor.call "elapsed", track, position
 
   toggleMute: (sound) ->
     listening = Session.get "muted"

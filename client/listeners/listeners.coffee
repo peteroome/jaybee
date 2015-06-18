@@ -5,11 +5,14 @@
 Template.listeners.events
   "click [data-control=master]": (event) ->
     event.preventDefault()
+    
+    button = $(event.currentTarget)
+    user_id = $(button).data("user-id")
 
-    if Session.get "muted"
-      Meteor.call "removeMaster"
+    if Masters.findOne {user_id: user_id}
+      Meteor.call "removeMaster", user_id
     else
-      Meteor.call "addMaster"
+      Meteor.call "addMaster", user_id
 
 Template.listeners.helpers
   muted: (user_id) ->
@@ -17,5 +20,4 @@ Template.listeners.helpers
     return if master? then true else false
 
   listeners: ->
-    # return Meteor.users.find({ "profile.online": true }).fetch()
     return UserPresences.find { state: "online" }

@@ -32,12 +32,16 @@ if Meteor.isClient
   # Register logged in/active user
   UserPresence.data = ->
     return {
-      avatar: Meteor.user().services.soundcloud.avatar_url,
-      name: Meteor.user().profile.name 
+      avatar: Session.get("userAvatar")
+      name: Session.get("userName")
     }
 
   Meteor.subscribe 'SC.OAuth', ->
     if Meteor.user()
+      # Set user on session
+      Session.set "userAvatar", Meteor.user().services.soundcloud.avatar_url
+      Session.set "userName", Meteor.user().profile.name
+
       # Set Access Token
       accessToken = Meteor.user().services.soundcloud.accessToken
       if accessToken
@@ -64,8 +68,3 @@ if Meteor.isClient
           Session.set "muted", false
       changed: (newMaster, oldMaster) ->
         Session.set "volume", newMaster.volume
-
-# Routes
-Router.map () ->
-  this.route 'home', 
-    path: '/'

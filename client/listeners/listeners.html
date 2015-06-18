@@ -3,7 +3,7 @@
   <ul class="listeners">
 	  {{#each listeners}}
 	  	<li>
-		    <a data-control="master" class="{{#if muted userId }}master{{/if}}" title="{{data.name}}">
+		    <a data-control="master" data-user-id="{{userId}}" class="{{#if muted userId }}master{{/if}}" title="{{data.name}}">
 		    	<img src="{{data.avatar}}" width="50" alt="{{data.name}}"/>
 		    </a>
 		  </li>

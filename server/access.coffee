@@ -77,18 +77,16 @@ Meteor.methods
         $set:
           position: position
 
-  addMaster: ->
+  addMaster: (user_id) ->
     return Masters.insert
-      user_id: Meteor.user()._id
+      user_id: user_id
       volume: ->
         master = Masters.findOne({})
         return if master? then master.volume else 50
 
-  removeMaster: ->
-    return Masters.remove user_id: Meteor.user()._id
+  removeMaster: (user_id) ->
+    return Masters.remove user_id: user_id
 
   setMasterVolume: (volume) ->
     return Masters.update({}, {$set: {volume: volume}}, { multi: true })
-
-
 

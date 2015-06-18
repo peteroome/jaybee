@@ -29,9 +29,6 @@ Template.now_playing.helpers
   length: ->
     return player.track_length @duration
 
-  elapsed: ->
-    return Session.get "local_elapsed_time"
-
   avatar_url: ->
     return @added_by.services.soundcloud.avatar_url
 

@@ -140,9 +140,7 @@ class window.Player
 
   elapsed: (track, position) =>
     elapsed_time = @track_length(position)
-
-    Session.set "local_elapsed_time", elapsed_time
-    Meteor.call "elapsed", [track, position, elapsed_time]
+    Meteor.call "elapsed", track, position, elapsed_time
 
   toggleMute: (sound) ->
     listening = Session.get "muted"

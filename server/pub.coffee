@@ -13,4 +13,8 @@ Meteor.publish "playlist_tracks", ->
     sort: [["created_at", "asc"]]
 
 Meteor.publish "userPresence",  ->
-  return UserPresences.find { state: "online" }
+  return UserPresences.find {
+    state: "online", 
+    "data.avatar": 
+      $ne: null
+  }

@@ -73,7 +73,7 @@ Meteor.methods
     if position > track.position
       PlaylistTracks.update track._id,
         $set:
-          position: position
+          elapsed_time: elapsed_time
 
   addMaster: (user_id) ->
     return Masters.insert
@@ -87,4 +87,3 @@ Meteor.methods
 
   setMasterVolume: (volume) ->
     return Masters.update({}, {$set: {volume: volume}}, { multi: true })
-

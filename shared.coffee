@@ -50,11 +50,12 @@ if Meteor.isClient
       # not set on the UI.
       # This sets it on the UI.
       Meteor.call "nowPlaying", (error, track) ->
-        @player.markAsNowPlaying track if track
+        if track
+          Meteor.call "markAsNowPlaying", track
 
-        # Set play position, add 2 seconds for
-        # possible delay in loading.
-        @player.play track, track.position + 2
+          # Set play position, add 2 seconds for
+          # possible delay in loading.
+          @player.play track, track.position + 2
 
   # Track shit to publish to everyone! \o/
   Tracker.autorun ->

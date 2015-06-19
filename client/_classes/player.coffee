@@ -97,7 +97,7 @@ class window.Player
 
     return duration_string
 
-  play: (track, position = 0) ->
+  play: (track) ->
     console.log "play"
     playerInstance = @
 
@@ -110,12 +110,10 @@ class window.Player
       # If joining a session and the player
       # is already playing, match the new
       # client to the currently playing position
-      sound.setPosition position if position > 0
+      # sound.setPosition(5000) if position > 0
 
       # Start playing the track
       sound.play
-        onfinish: ->
-          playerInstance.playNext()
         whileplaying: ->
           playerInstance.elapsed track, @position
           playerInstance.toggleMute @
@@ -124,24 +122,24 @@ class window.Player
           if @readyState == 2
             console.warn "There was a problem with the track.", @
             playerInstance.playNext()
+        onfinish: ->
+          playerInstance.playNext()
 
   playNext: ->
-    # Add to history
-    Meteor.call "addToHistory"
-
-    # Clear the currently playing Session data
-    Meteor.call "clearPlaying"
-
     Meteor.call "nextTrack", (error, track) =>
+      console.log error, track
       if track
-        @markAsNowPlaying track
+        # Add to history
+        Meteor.call "addToHistory"
+
+        # Clear the currently playing Session data    
+        Meteor.call "clearPlaying"
+
+        Meteor.call "markAsNowPlaying", track
+          
         @play track
       else
         console.log "Add a track to the playlist"
-
-  markAsNowPlaying: (track) ->
-    @elapsed(track, 0)
-    Meteor.call "markAsNowPlaying", track
 
   elapsed: (track, position) =>
     elapsed_time = @track_length(position)

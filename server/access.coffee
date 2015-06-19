@@ -21,11 +21,9 @@ Meteor.methods
 
   markAsNowPlaying: (track) ->
     # PlaylistTracks.update(track._id, {$set: {now_playing: true}})
-    PlaylistTracks.update track._id,
+    return PlaylistTracks.update track._id,
       $set:
         now_playing: true
-
-    return track
 
   nowPlaying: ->
     # PlaylistTracks.findOne({now_playing: true}, {sort: [["created_at", "asc"]]})
@@ -62,7 +60,7 @@ Meteor.methods
   addToHistory: ->
     Meteor.call "nowPlaying", (error, track) ->
       if track
-        PlayedTracks.insert
+        return PlayedTracks.insert
           track_id: track.track_id
           added_by: Meteor.user()
           upVotes: track.upVotes

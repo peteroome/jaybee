@@ -1,8 +1,9 @@
 Template.playlist.events 
   "click a.remove": (event) ->
     event.preventDefault()
-    player.removeFromPlaylist event.currentTarget.dataset.trackId
-    return
+    
+    return Meteor.call 'removeFromPlaylist', 
+      event.currentTarget.dataset.trackId
 
   "click a.favorite": (event) ->
     event.preventDefault()

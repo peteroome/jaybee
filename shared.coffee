@@ -12,13 +12,6 @@ if Meteor.isClient
   @player = new Player
   @search = new Search
 
-  # Set NowPlaying Track
-  # Sometimes there is one in the playlist, but it's
-  # not set on the UI.
-  # This sets it on the UI.
-  Meteor.call "nowPlaying", (error, track) ->
-    @player.markAsNowPlaying track if track
-
   # Subscriptions
   # Docs: https://www.meteor.com/try/11
   Meteor.subscribe "masters"
@@ -51,6 +44,17 @@ if Meteor.isClient
 
         # Get and set favorites
         player.getFavorites()
+
+      # Set NowPlaying Track
+      # Sometimes there is one in the playlist, but it's
+      # not set on the UI.
+      # This sets it on the UI.
+      Meteor.call "nowPlaying", (error, track) ->
+        @player.markAsNowPlaying track if track
+
+        # Set play position, add 2 seconds for
+        # possible delay in loading.
+        @player.play track, track.position + 2
 
   # Track shit to publish to everyone! \o/
   Tracker.autorun ->

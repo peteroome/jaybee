@@ -97,7 +97,7 @@ class window.Player
 
     return duration_string
 
-  play: (track) ->
+  play: (track, position = 0) ->
     console.log "play"
     playerInstance = @
 
@@ -110,7 +110,7 @@ class window.Player
       # If joining a session and the player
       # is already playing, match the new
       # client to the currently playing position
-      # if track.position > 0
+      sound.setPosition position if position > 0
 
       # Start playing the track
       sound.play

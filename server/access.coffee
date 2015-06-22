@@ -57,15 +57,14 @@ Meteor.methods
       if track
         PlaylistTracks.remove(track._id)
 
-  addToHistory: ->
-    Meteor.call "nowPlaying", (error, track) ->
-      if track
-        return PlayedTracks.insert
-          track_id: track.track_id
-          added_by: Meteor.user()
-          upVotes: track.upVotes
-          downVotes: track.downVotes
-          created_at: new Date()
+  addToHistory: (track) ->
+    return PlayedTracks.insert
+      track_id: track.track_id
+      added_by: Meteor.user()
+      upVotes: track.upVotes
+      downVotes: track.downVotes
+      created_at: new Date(),
+      randomizer: [Math.random(), 0]
 
   addMaster: (user_id) ->
     return Masters.insert
@@ -81,6 +80,7 @@ Meteor.methods
     return Masters.update({}, {$set: {volume: volume}}, { multi: true })
 
   autoAddTracks: ->
-    # PlayedTracks.find({}, {sort: [["created_at", "asc"]]})
-    return PlayedTracks.find( {$where: "this.upVotes.length > this.downVotes.length" }, { sort: [["created_at", "asc"]] , limit: 3 } ).fetch()
+    return _.uniq(PlayedTracks.find({randomizer: { $near: [Math.random(), 0] } }, { limit: 3 } ).fetch(), (track) ->
+      return track.track_id
+    )
 

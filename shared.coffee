@@ -76,3 +76,8 @@ if Meteor.isClient
           Session.set "muted", false
       changed: (newMaster, oldMaster) ->
         Session.set "volume", newMaster.volume
+
+if Meteor.isServer
+  Meteor.startup ->
+    # Set indexes
+    @PlayedTracks._ensureIndex { randomizer: "2d" }

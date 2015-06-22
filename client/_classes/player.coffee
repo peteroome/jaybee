@@ -128,7 +128,7 @@ class window.Player
     Meteor.call "nextTrack", (error, track) =>
       if track
         # Add to history
-        Meteor.call "addToHistory"
+        Meteor.call "addToHistory", track
 
         # Clear the currently playing Session data    
         Meteor.call "clearPlaying"

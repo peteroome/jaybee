@@ -134,10 +134,23 @@ class window.Player
         Meteor.call "clearPlaying"
 
         Meteor.call "markAsNowPlaying", track
-          
-        # @play track
+        
+        @addMoreTracks()
       else
         console.log "Add a track to the playlist"
+        @autoAddTracks()
+
+  addMoreTracks: =>
+    playerInstance = @
+
+    Meteor.call "nextTrack", (error, track) =>
+      playerInstance.autoAddTracks() unless track
+
+  autoAddTracks: =>
+    playerInstance = @
+    Meteor.call "autoAddTracks", (error, tracks) ->
+      for track in tracks
+        playerInstance.addToPlaylist track.track_id
 
   elapsed: (track, position) =>
     elapsed_time = @track_length(position)

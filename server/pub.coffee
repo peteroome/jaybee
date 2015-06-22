@@ -8,6 +8,9 @@ Meteor.publish 'SC.OAuth', () ->
 Meteor.publish "masters", ->
   return Masters.find()
 
+Meteor.publish "played_tracks", ->
+  return PlayedTracks.find()
+
 Meteor.publish "playlist_tracks", ->
   return PlaylistTracks.find {}, 
     sort: [["created_at", "asc"]]

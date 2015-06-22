@@ -16,6 +16,7 @@ if Meteor.isClient
   # Docs: https://www.meteor.com/try/11
   Meteor.subscribe "masters"
   Meteor.subscribe "playlist_tracks"
+  Meteor.subscribe "played_tracks"
   Meteor.subscribe "userPresence"
 
   # Default session settings

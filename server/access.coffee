@@ -79,3 +79,8 @@ Meteor.methods
 
   setMasterVolume: (volume) ->
     return Masters.update({}, {$set: {volume: volume}}, { multi: true })
+
+  autoAddTracks: ->
+    # PlayedTracks.find({}, {sort: [["created_at", "asc"]]})
+    return PlayedTracks.find( {$where: "this.upVotes.length > this.downVotes.length" }, { sort: [["created_at", "asc"]] , limit: 3 } ).fetch()
+

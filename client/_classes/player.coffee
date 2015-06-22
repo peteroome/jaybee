@@ -14,7 +14,6 @@ class window.Player
       if error
         Meteor.Error(404, error.message)
       else
-        console.log "Client:", track
         Meteor.call 'addToPlaylist', track
 
   removeFromPlaylist: (track_id) ->

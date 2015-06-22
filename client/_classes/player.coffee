@@ -127,7 +127,6 @@ class window.Player
 
   playNext: ->
     Meteor.call "nextTrack", (error, track) =>
-      console.log error, track
       if track
         # Add to history
         Meteor.call "addToHistory"
@@ -137,7 +136,7 @@ class window.Player
 
         Meteor.call "markAsNowPlaying", track
           
-        @play track
+        # @play track
       else
         console.log "Add a track to the playlist"
 
@@ -148,10 +147,6 @@ class window.Player
     # from gibbing out as we update across
     # multiple clients.
     Session.set "local_elapsed_time", elapsed_time
-
-    # This updates the current position on the 
-    # track, so we can plumb in a resume function.
-    Meteor.call "elapsed", track, position
 
   toggleMute: (sound) ->
     listening = Session.get "muted"

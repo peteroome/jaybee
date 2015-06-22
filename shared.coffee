@@ -55,10 +55,17 @@ if Meteor.isClient
 
           # Set play position, add 2 seconds for
           # possible delay in loading.
-          @player.play track, track.position + 2
+          @player.play track
 
   # Track shit to publish to everyone! \o/
   Tracker.autorun ->
+    PlaylistTracks.find().observeChanges
+      changed: (id, fields) ->
+        if fields.now_playing?
+          Meteor.call "nowPlaying", (error, track) ->
+            if track
+              @player.play track
+
     Masters.find().observe
       added: (master) ->
         if Meteor.user() and master.user_id == Meteor.user()._id

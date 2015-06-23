@@ -1,0 +1,27 @@
+<template name="search">
+  <h2>Search:</h2>
+  <form id="search_form">
+    <input class="search" type="text" name="search" placeholder="Search for a track…" />
+  </form>
+</template>
+
+<template name="searchResults">
+  <ul class="searchResults">
+    {{#each results}}
+      <li>
+        <div class="imageHolder">
+          <a class="add" data-track-id="{{id}}">
+            <img src="{{track_image_url}}" width="50" />
+          </a>
+        </div><div class="trackDetail">
+          <p>{{title}} - {{user.username}} <span><small>({{length duration}})</small></span>&nbsp;<a href="{{permalink_url}}" target="_blank"><i class="fa fa-external-link"></i></a></p>
+        </div>
+        <ul>
+          <li>
+            <a class="add button" data-track-id="{{id}}">Add</a>
+          </li>
+        </ul>
+      </li>
+    {{/each}}
+  </ul>
+</template>

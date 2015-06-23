@@ -3,10 +3,11 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-standard-app-packages
-autopublish
+meteor-platform
 insecure
+iron:router
 coffeescript
-accounts-ui-unstyled
-mrt:profile-online
 mrt:accounts-soundcloud
+accounts-ui-unstyled
+fortawesome:fontawesome
+dpid:user-presence

@@ -1,0 +1,17 @@
+<template name="header">
+  <header>
+    <div class="container">
+      <div class="parent-element">
+        <div class="eight-col">
+          <h1>Jaybee</h1>
+        </div>
+        <nav>
+          {{> loginButtons}}
+          {{#if currentUser}}
+            <img class="avatar" width="25" src="{{currentUser.services.soundcloud.avatar_url}}" />
+          {{/if}}
+        </nav>
+      </div>
+    </div>
+  </header>
+</template>

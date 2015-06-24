@@ -1,0 +1,9 @@
+{
+	"useIndex" : true,
+	"indexFilePath" : "client/stylesheets/application.scss",
+  "includePaths": [
+    ".meteor/local/build/programs/server/assets/packages/wolves_bourbon",
+    ".meteor/local/build/programs/server/assets/packages/wolves_bitters",
+    ".meteor/local/build/programs/server/assets/packages/wolves_neat"
+  ]
+}

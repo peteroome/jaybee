@@ -1,0 +1,248 @@
+// Layout structure
+.container {
+  @include outer-container;
+  outline: thin solid blue;
+
+  .parent-element {
+    @include span-columns(8);
+    @include shift(2);
+    outline: thin solid red;
+  }
+}
+
+.four-col {
+  @include span-columns(4);
+}
+
+.eight-col {
+  @include span-columns(8);
+}
+
+// Design
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: $green;
+}
+
+nav {
+  @include span-columns(4);
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  color: $white;
+  font-size: $base-font-size;
+  margin: 0;
+}
+
+// h2 {
+// }
+
+// h3 {
+// }
+
+// .avatar,
+// #login-buttons {
+//   display: inline-block;
+// }
+
+// .avatar {
+//   -webkit-border-radius: 30px;
+//   -moz-border-radius: 30px;
+//   border-radius: 30px;
+//   border-color: #f95300;
+//   border-width: 3px;
+//   border-style: solid;
+// }
+
+// #login-buttons {
+//   max-width: 200px;
+//   margin: 0 20px 0 0;
+// }
+
+// /* Login */
+// .login-text-and-button {
+//   color: #f95300;
+// }
+
+// .login-text-and-button:hover {
+//   cursor: pointer;
+// }
+
+// .login-text-and-button > div {
+//   width: auto;
+//   display: inline-block;
+// }
+
+// .login-text-and-button :first-child {
+//   margin-right: 5px;
+// }
+
+// .login-text-and-button :last-child {
+//   margin-left: 5px;
+// }
+
+// .master_button.master,
+// .master_button:hover {
+//   background: white;
+//   color: #f95300;
+// }
+
+// a {
+//   color: #f95300;
+// }
+
+// a:hover {
+//   cursor: pointer;
+//   text-decoration: none;
+// }
+
+// section {
+//   display: inline-block;
+//   padding: 15px 25px;
+//   clear: both;
+// }
+
+// .search_col,
+// .playlist_col {
+//   display: inline-block;
+//   vertical-align: top;
+// }
+
+// .playlist_col {
+//   width: 59%;
+//   margin-left: 1%;
+// }
+
+// .search_col {
+//   width: 39%;
+//   margin-right: 1%;
+// }
+
+// /* Search Form */
+// .search {
+//   width: 98%;
+//   font-size: 1.4em;
+//   line-height: 150%;
+//   height: 50px;
+//   border: 1px solid rgb(238, 238, 238);
+//   padding: 1%;
+// }
+
+// .searchResults {
+//   list-style: none;
+//   margin: 10px 0;
+//   padding: 0;
+// }
+
+// .searchResults li {
+//   margin: 10px 0;
+//   padding: 10px 0;
+//   border-bottom: 1px solid rgb(238, 238, 238);
+// }
+
+// .imageHolder,
+// .trackDetail {
+//   display: inline-block;
+//   vertical-align: top;
+// }
+
+// .imageHolder {
+//   width: 14%;
+//   margin-right: 1%;
+// }
+
+// .trackDetail {
+//   width: 84%;
+//   margin-left: 1%;
+// }
+
+// .trackDetail p {
+//   margin: 0;
+//   line-height: 145%;
+// }
+
+// .searchResults li > ul {
+//   display: inline-block;
+//   widows: 100%;
+//   margin: 0;
+//   padding: 0;
+//   list-style: none;
+// }
+
+// .searchResults li > ul li {
+//   border: 0;
+//   padding: 0;
+// }
+
+// /* Favourites */
+// a.favorite {
+//   color: black;
+// }
+
+// a.favorite:hover,
+// a.favorited {
+//   color: #f95300;
+// }
+
+// .controls {
+//   list-style: none;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// .controls li {
+//   display: inline-block;
+//   font-size: 2em;
+//   padding: 0 15px
+// }
+
+// /* Buttons */
+// .button {
+//   background: #f95300;
+//   padding: 6px 10px;
+//   color: white;
+//   border-radius: 4px;
+// }
+
+// /* Listeners */
+// .listeners {
+//   list-style: none;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// .listeners li {
+//   display: inline-block;
+// }
+
+// .listeners li a {
+//   display: inline-block;
+//   -webkit-border-radius: 30px;
+//   -moz-border-radius: 30px;
+//   border-radius: 30px;
+//   border-color: black;
+//   border-width: 3px;
+//   border-style: solid;
+//   margin: 0 5px 5px 0;
+// }
+
+// .listeners li a:hover,
+// .listeners li a.master {
+//   border-color: #f95300;
+// }
+
+// .listeners li img {
+//   -webkit-border-radius: 30px;
+//   -moz-border-radius: 30px;
+//   border-radius: 30px;
+// }

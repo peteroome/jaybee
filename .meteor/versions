@@ -16,6 +16,7 @@ dpid:user-presence@1.0.3
 ejson@1.0.6
 fastclick@1.0.3
 fortawesome:fontawesome@4.3.0
+fourseven:scss@3.1.1
 geojson-utils@1.0.3
 html-tools@1.0.4
 htmljs@1.0.4
@@ -65,3 +66,6 @@ underscore@1.0.3
 url@1.0.4
 webapp@1.2.0
 webapp-hashing@1.0.3
+wolves:bitters@2.1.2
+wolves:bourbon@2.0.0
+wolves:neat@2.1.2

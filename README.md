@@ -104,3 +104,6 @@ Logo art would be featured on the platform interface itself.
 
 Credits for all design contributions would appear, atleast, within the source code of the project as well as on this project page.
 
+
+
+Screenshot: http://cl.ly/TxSO/o

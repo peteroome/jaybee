@@ -29,7 +29,7 @@ Template.playlist.helpers
     return @added_by._id == Meteor.user()._id
 
   avatar_url: ->
-    return @added_by.services.soundcloud.avatar_url
+    return @added_by.services.profile.name
 
   favourited: ->
     accessTokenDep.depend()

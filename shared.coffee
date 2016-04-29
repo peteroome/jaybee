@@ -19,10 +19,13 @@ if Meteor.isClient
   Meteor.subscribe "played_tracks"
   Meteor.subscribe "userPresence"
 
-  # Default session settings
-  Session.set "muted", false
-  Session.set "volume", 50
-  Session.set "local_elapsed_time", "00:00"
+  # Try Mopidy
+  $.getScript 'http://192.168.1.50:6680/mopidy/mopidy.min.js', () ->
+    # create a mopidy websocket connection
+    mopidy = new Mopidy
+      webSocketUrl: 'ws://192.168.1.50:6680/mopidy/ws/'
+    mopidy.on(console.log.bind(console))  # Log all events
+    console.log(mopidy)    
 
   # Register logged in/active user
   UserPresence.data = ->
@@ -34,11 +37,11 @@ if Meteor.isClient
   Meteor.subscribe 'SC.OAuth', ->
     if Meteor.user()
       # Set user on session
-      Session.set "userAvatar", Meteor.user().services.soundcloud.avatar_url
+      Session.set "userAvatar", Meteor.user().profile.name
       Session.set "userName", Meteor.user().profile.name
 
       # Set Access Token
-      accessToken = Meteor.user().services.soundcloud.accessToken
+      accessToken = Meteor.user().services.slack.accessToken
       if accessToken
         accessTokenDep.changed()
         SC.accessToken accessToken

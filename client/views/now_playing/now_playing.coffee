@@ -33,7 +33,7 @@ Template.now_playing.helpers
     return player.track_length @duration
 
   avatar_url: ->
-    return @added_by.services.soundcloud.avatar_url
+    return @added_by.services.profile.name
 
   favourited: ->
     accessTokenDep.depend()

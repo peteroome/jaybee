@@ -3,11 +3,11 @@
   <div class="container">  
     {{#if currentUser}}
       <section class="parent-element">
-        <!-- <aside class="search_col">
+        <aside class="search_col">
           {{> listeners}}
           {{> search}}
           {{> searchResults}}
-        </aside> -->
+        </aside>
         <article class="playlist_col">
           {{> controls}}
           {{> now_playing}}
@@ -16,7 +16,6 @@
       </section>
     {{else}}
       <h1>Welcome to Jaybee</h1>
-      <p>Log in with Soundcloud to tune in.</p>
     {{/if}}
   </div>
 </template>
